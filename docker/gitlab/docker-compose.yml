@@ -1,0 +1,15 @@
+gitlab:
+  image: gitlab/gitlab-ce:latest
+  restart: always
+  hostname: '${GIT_DOMAIN}.bolado.network'
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      external_url 'http://${GIT_DOMAIN}.bolado.network:9090'
+      gitlab_rails['gitlab_shell_ssh_port'] = 2224
+  ports:
+    - "9090:9090"
+    - "2224:22"
+  volumes:
+    - ./config:/etc/gitlab
+    - ./logs:/var/log/gitlab
+    - ./data:/var/opt/gitlab
