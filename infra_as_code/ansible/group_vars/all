@@ -1,0 +1,5 @@
+---
+# Variáveis para todos os hosts
+
+httpd_port: 80
+ntpserver: 200.160.0.8
